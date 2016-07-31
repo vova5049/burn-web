@@ -15,21 +15,21 @@ public class main
 
         String dvd = "DVD+-RW DS-8A8S";
         ArrayList devList = new ArrayList();
-        // указываем в констр
-        // укторе ProcessBuilder,
-        // что нужно запустить программу ls с параметрами -l /dev
+        // СѓРєР°Р·С‹РІР°РµРј РІ РєРѕРЅСЃС‚СЂ
+        // СѓРєС‚РѕСЂРµ ProcessBuilder,
+        // С‡С‚Рѕ РЅСѓР¶РЅРѕ Р·Р°РїСѓСЃС‚РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ ls СЃ РїР°СЂР°РјРµС‚СЂР°РјРё -l /dev
         ProcessBuilder procBuilder = new ProcessBuilder("C:\\Program Files (x86)\\cdrtools\\cdrecord.exe","-scanbus");
         //ProcessBuilder procBuilder = new ProcessBuilder("C:\\Program Files (x86)\\cdrtools\\cdrecord.exe","dev=8,0,0","-eject");
 
 
-        // перенаправляем стандартный поток ошибок на
-        // стандартный вывод
+        // РїРµСЂРµРЅР°РїСЂР°РІР»СЏРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РїРѕС‚РѕРє РѕС€РёР±РѕРє РЅР°
+        // СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РІС‹РІРѕРґ
         procBuilder.redirectErrorStream(true);
 
-        // запуск программы
+        // Р·Р°РїСѓСЃРє РїСЂРѕРіСЂР°РјРјС‹
         Process process = procBuilder.start();
-        // читаем стандартный поток вывода
-        // и выводим на экран
+        // С‡РёС‚Р°РµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РїРѕС‚РѕРє РІС‹РІРѕРґР°
+        // Рё РІС‹РІРѕРґРёРј РЅР° СЌРєСЂР°РЅ
         InputStream stdout = process.getInputStream();
         InputStreamReader isrStdout = new InputStreamReader(stdout);
         BufferedReader brStdout = new BufferedReader(isrStdout);
@@ -57,9 +57,9 @@ public class main
 
         }
 
-        // ждем пока завершится вызванная программа
-        // и сохраняем код, с которым она завершилась в
-        // в переменную exitVal
+        // Р¶РґРµРј РїРѕРєР° Р·Р°РІРµСЂС€РёС‚СЃСЏ РІС‹Р·РІР°РЅРЅР°СЏ РїСЂРѕРіСЂР°РјРјР°
+        // Рё СЃРѕС…СЂР°РЅСЏРµРј РєРѕРґ, СЃ РєРѕС‚РѕСЂС‹Рј РѕРЅР° Р·Р°РІРµСЂС€РёР»Р°СЃСЊ РІ
+        // РІ РїРµСЂРµРјРµРЅРЅСѓСЋ exitVal
 
         if (devList.isEmpty())
         {}
