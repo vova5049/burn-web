@@ -17,7 +17,7 @@ public class main
         ArrayList devList = new ArrayList();
         // указываем в констр
         // укторе ProcessBuilder,
-        // что нужно запустить программу ls с параметрами -l /dev
+        // что нужно запустить программу cdrecord с параметром -scanbus
         ProcessBuilder procBuilder = new ProcessBuilder("C:\\Program Files (x86)\\cdrtools\\cdrecord.exe","-scanbus");
         //ProcessBuilder procBuilder = new ProcessBuilder("C:\\Program Files (x86)\\cdrtools\\cdrecord.exe","dev=8,0,0","-eject");
 
@@ -29,15 +29,13 @@ public class main
         // запуск программы
         Process process = procBuilder.start();
         // читаем стандартный поток вывода
-        // и выводим на экран
         InputStream stdout = process.getInputStream();
         InputStreamReader isrStdout = new InputStreamReader(stdout);
         BufferedReader brStdout = new BufferedReader(isrStdout);
 
         String line = null;
         while((line = brStdout.readLine()) != null) {
-            //System.out.println(line);
-            //System.out.println(line.length());
+
             if (line.length() >= 45)
             {
                 String resultStr = line.substring(24, 39);
@@ -62,18 +60,33 @@ public class main
         // и сохраняем код, с которым она завершилась в
         // в переменную exitVal
 
+
+        // если devList не пустой
         if (devList.isEmpty())
         {}
+
+        // то перебираем devList и печатаем значения
         else
         {
             for (int i = 0; i<=(devList.size()-1); i++)
             {
                 System.out.println(devList.get(i));
+
+                // создаем устройства
+                //CDrw [] array = new CDrw [devList.get(i)];
+                CDrw [] array = new CDrw [devList.size()];
+
             }
         }
         //for ()
         //devList.size()
+        System.out.println(devList.size());
+        PrintCDrw();
 
         int exitVal = process.waitFor();
+    }
+
+    private static void PrintCDrw() {
+        for (int i=0; i<=(; i++))
     }
 }
